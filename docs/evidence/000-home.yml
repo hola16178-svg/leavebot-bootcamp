@@ -1,0 +1,6 @@
+- main [ref=f1e2]:
+  - paragraph [ref=f1e3]: LEAVEBOT
+  - heading "服務連線檢查" [level=1] [ref=f1e4]
+  - paragraph [ref=f1e5]: 先確認服務已就緒，再開始下一步。
+  - status [ref=f1e6]: 服務連線正常
+  - button "重新檢查" [ref=f1e7] [cursor=pointer]

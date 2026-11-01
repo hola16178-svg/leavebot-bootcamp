@@ -1,0 +1,6 @@
+1. [GET] http://127.0.0.1:8000/ => [200] OK
+2. [GET] http://127.0.0.1:8000/style.css => [200] OK
+3. [GET] http://127.0.0.1:8000/app.js => [200] OK
+4. [GET] http://127.0.0.1:8000/api/health => [200] OK
+5. [GET] http://127.0.0.1:8000/api/employees => [200] OK
+6. [GET] http://127.0.0.1:8000/api/leaves?employee_id=1 => [200] OK

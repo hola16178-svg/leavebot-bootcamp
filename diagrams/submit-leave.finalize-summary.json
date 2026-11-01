@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "workflow",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\student\\Desktop\\AIPE05-27-程建宏\\leavebot-bootcamp\\diagrams\\submit-leave.candidate.json",
+    "sha256": "90d2f9b0aeb6e32163f10aa68039f418650ae22448f7b5372ca6a6fb81f48c83",
+    "bytes": 4581
+  },
+  "artifact": {
+    "path": "C:\\Users\\student\\Desktop\\AIPE05-27-程建宏\\leavebot-bootcamp\\diagrams\\submit-leave.html",
+    "sha256": "e19bf8db4356980b9c9b14577081bd79201c83d48591a657f6300d5614e2c4a3",
+    "bytes": 825883
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\student\\Desktop\\AIPE05-27-程建宏\\leavebot-bootcamp\\diagrams\\submit-leave.finalize.json",
+    "summaryReceipt": "C:\\Users\\student\\Desktop\\AIPE05-27-程建宏\\leavebot-bootcamp\\diagrams\\submit-leave.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\student\\Desktop\\AIPE05-27-程建宏\\leavebot-bootcamp\\diagrams\\submit-leave.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-11-01T03:29:06.268Z",
+    "source": "network",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 2789,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  }
+}

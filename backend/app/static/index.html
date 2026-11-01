@@ -1,0 +1,26 @@
+﻿<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeaveBot｜請假申請</title><link rel="icon" href="data:,">
+<link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script>
+</head>
+<body><main>
+<header><div><p class="eyebrow">LEAVEBOT · 請假小幫手</p><h1>安排休息，安心送出。</h1><p>填寫申請後，在「我的假單」確認登記結果。</p></div>
+<div class="connection"><span id="health-status" role="status">檢查連線中…</span><button type="button" id="retry" class="quiet">重新檢查</button></div></header>
+<section class="identity" aria-labelledby="identity-title"><h2 id="identity-title">你是哪位同事？</h2>
+<label for="employee">員工</label><select id="employee" disabled><option value="">正在載入員工…</option></select>
+<p id="employee-message" role="status">本頁使用教學員工資料，沒有登入功能。</p></section>
+<div class="workspace">
+<section class="panel" aria-labelledby="form-title"><p class="eyebrow">01 / 新增申請</p><h2 id="form-title">填寫請假單</h2>
+<form id="leave-form"><fieldset id="leave-fields" disabled><legend class="sr-only">請假資料</legend>
+<label for="leave-type">假別 <span>必填</span></label><select id="leave-type" name="leave_type" required><option value="annual">特休</option><option value="personal">事假</option><option value="sick">病假</option></select>
+<div class="dates"><div><label for="start-date">開始日期 <span>必填</span></label><input id="start-date" name="start_date" type="date" required></div><div><label for="end-date">結束日期 <span>必填</span></label><input id="end-date" name="end_date" type="date" required></div></div>
+<label for="period">時段 <span>必填</span></label><select id="period" name="period" required><option value="full">整天</option><option value="am">上午</option><option value="pm">下午</option></select>
+<p class="hint">只計週一至週五；半天限同一個工作日。可補登過去日期。</p>
+<label for="reason">理由 <span>選填</span></label><textarea id="reason" name="reason" rows="3" aria-describedby="reason-count" placeholder="有需要補充的事項嗎？"></textarea><p class="hint" id="reason-count">0 / 200 字；去除前後空白後計算</p>
+<button id="submit-leave" type="submit">送出請假申請</button></fieldset></form>
+<p id="submit-message" class="feedback" role="status" aria-live="polite">請先選擇員工。</p></section>
+<section class="panel" aria-labelledby="list-title"><div class="list-heading"><div><p class="eyebrow">02 / 登記結果</p><h2 id="list-title">我的假單</h2></div><button id="refresh-leaves" type="button" class="quiet" disabled>查看我的假單</button></div>
+<p class="hint">申請成功後狀態為「待審核」，不代表已核准。</p><p id="list-message" role="status" aria-live="polite">選擇員工後查看申請。</p><ul id="leave-list" aria-label="請假申請列表"></ul></section>
+</div></main></body></html>

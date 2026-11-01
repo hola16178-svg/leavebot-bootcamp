@@ -1,0 +1,49 @@
+{
+  "schema_version": 2,
+  "diagram_type": "workflow",
+  "meta": {"title": "LeaveBot：員工提交請假", "locale": "zh-TW", "quality_profile": "showcase", "output": "diagrams/submit-leave.html"},
+  "lanes": [
+    {"id":"entry","label":"員工與表單"},
+    {"id":"server","label":"後端驗證與存檔"},
+    {"id":"result","label":"回饋與我的假單"},
+    {"id":"exception","label":"拒絕與結果未知","variant":"exception"}
+  ],
+  "mainPath": ["employee","form","submit","validate","store","success","query","list"],
+  "nodes": [
+    {"id":"employee","lane":"entry","col":0,"type":"frontend","icon":"person","label":"選員工","sublabel":"名單內員工 · FR-01"},
+    {"id":"form","lane":"entry","col":1,"type":"frontend","label":"填請假單","sublabel":"假別、日期、時段、理由"},
+    {"id":"submit","lane":"entry","col":2,"type":"frontend","label":"送出中","sublabel":"鎖按鈕，連點不重送"},
+    {"id":"validate","lane":"server","col":2,"type":"backend","icon":"decision","label":"後端驗證","sublabel":"必填、合法值、日期、理由"},
+    {"id":"store","lane":"server","col":3,"type":"database","label":"SQLite 存檔","sublabel":"後端算天數，固定 pending"},
+    {"id":"success","lane":"result","col":3,"type":"frontend","icon":"success","label":"顯示成功","sublabel":"結束送出中 · FR-05、06"},
+    {"id":"query","lane":"result","col":4,"type":"backend","label":"查我的假單","sublabel":"只查所選員工 · FR-09"},
+    {"id":"list","lane":"result","col":5,"type":"frontend","label":"顯示假單","sublabel":"內容、天數、待審核"},
+    {"id":"empty","lane":"server","col":5,"type":"frontend","label":"目前沒有申請","sublabel":"清除舊列表，不新增"},
+    {"id":"reject","lane":"exception","col":2,"type":"frontend","icon":"failure","label":"錯誤回饋","sublabel":"不存檔，結束送出中"},
+    {"id":"unknown","lane":"exception","col":4,"type":"frontend","icon":"waiting","label":"無法確認結果","sublabel":"解鎖，先查假單，不重送"}
+  ],
+  "edges": [
+    {"id":"select-fill","from":"employee","to":"form"},
+    {"id":"fill-send","from":"form","to":"submit"},
+    {"id":"send-validate","from":"submit","to":"validate"},
+    {"id":"valid-save","from":"validate","to":"store","label":"通過","variant":"emphasis"},
+    {"id":"save-success","from":"store","to":"success"},
+    {"id":"success-query","from":"success","to":"query"},
+    {"id":"query-list","from":"query","to":"list","label":"有申請"},
+    {"id":"query-empty","from":"query","to":"empty","label":"無申請","role":"branch"},
+    {"id":"validation-reject","from":"validate","to":"reject","label":"不合法","role":"error"},
+    {"id":"correct-form","from":"reject","to":"form","label":"修正再送","role":"return"},
+    {"id":"network-unknown","from":"submit","to":"unknown","label":"網路中斷","role":"branch"}
+  ],
+  "semanticChecks": {
+    "allowedRoots":["employee"],
+    "allowedTerminals":["list","empty","unknown"],
+    "requiredEdges":[{"from":"validate","to":"reject"},{"from":"validate","to":"store"}],
+    "requiredPaths":[{"from":"employee","to":"list"}]
+  },
+  "cards": [
+    {"dot":"cyan","title":"來源與驗證規則","items":["依 docs/03-srs.md v0.2 的 FR-01～FR-10；本圖描述規格，尚非已實作功能。","FR-01～04：員工存在；特休／事假／病假；日期有效且不反向，接受過去日期。","理由選填：去除前後空白，按 Unicode 碼位計數最多 200，中間空白計入；純文字保存顯示。","含首尾，只算週一至週五；整天每工作日 1 天；半天限單一工作日 0.5 天；零工作日拒絕。"]},
+    {"dot":"emerald","title":"存檔與列表","items":["FR-05：所有驗證通過才存入 SQLite；天數及 pending 由後端決定，客戶端不能覆寫。","FR-07：完成後再次送出相同合法內容仍新增，不自動去重。","FR-09、10：重新整理並選回同一員工仍查得到；切換員工不混入他人資料；查詢不新增。","列表顯示假別、起訖日期、時段、理由、天數、待審核。無登入，不代表身分授權。"]},
+    {"dot":"amber","title":"拒絕與連線中斷的差別","items":["FR-08：驗證拒絕不新增假單，顯示可理解錯誤；修正後可再送。","FR-06：網路中斷時顯示『無法確認是否送出成功，請先查看我的假單，再決定是否重送』。","解除按鈕鎖定、不自動重送；此時可能已存檔，不能聲稱沒有新增。使用者可自行先查看假單。"]}
+  ]
+}

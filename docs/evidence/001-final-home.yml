@@ -1,0 +1,84 @@
+- main [ref=f5e2]:
+  - generic [ref=f5e3]:
+    - generic [ref=f5e4]:
+      - paragraph [ref=f5e5]: LEAVEBOT · 請假小幫手
+      - heading "安排休息，安心送出。" [level=1] [ref=f5e6]
+      - paragraph [ref=f5e7]: 填寫申請後，在「我的假單」確認登記結果。
+    - generic [ref=f5e8]:
+      - status [ref=f5e9]: 服務連線正常
+      - button "重新檢查" [ref=f5e10] [cursor=pointer]
+  - region [ref=f5e11]:
+    - heading "你是哪位同事？" [level=2] [ref=f5e12]
+    - generic [ref=f5e13]: 員工
+    - combobox "員工" [ref=f5e14]:
+      - option "請選擇員工"
+      - option "員工A" [selected]
+      - option "員工B"
+      - option "員工C"
+    - status [ref=f5e15]: 本頁使用教學員工資料，沒有登入功能。
+  - generic [ref=f5e16]:
+    - region [ref=f5e17]:
+      - paragraph [ref=f5e18]: 01 / 新增申請
+      - heading "填寫請假單" [level=2] [ref=f5e19]
+      - group "請假資料" [ref=f5e21]:
+        - generic [ref=f5e23]: 假別 必填
+        - combobox "假別 必填" [ref=f5e24]:
+          - option "特休" [selected]
+          - option "事假"
+          - option "病假"
+        - generic [ref=f5e25]:
+          - generic [ref=f5e26]:
+            - generic [ref=f5e27]: 開始日期 必填
+            - textbox "開始日期 必填" [ref=f5e28]
+          - generic [ref=f5e29]:
+            - generic [ref=f5e30]: 結束日期 必填
+            - textbox "結束日期 必填" [ref=f5e31]
+        - generic [ref=f5e32]: 時段 必填
+        - combobox "時段 必填" [ref=f5e33]:
+          - option "整天" [selected]
+          - option "上午"
+          - option "下午"
+        - paragraph [ref=f5e34]: 只計週一至週五；半天限同一個工作日。可補登過去日期。
+        - generic [ref=f5e35]: 理由 選填
+        - textbox "理由 選填" [ref=f5e36]:
+          - /placeholder: 有需要補充的事項嗎？
+        - paragraph [ref=f5e37]: 0 / 200 字；去除前後空白後計算
+        - button "送出請假申請" [ref=f5e38] [cursor=pointer]
+      - status [ref=f5e39]: 填妥後即可送出申請。
+    - region [ref=f5e40]:
+      - generic [ref=f5e41]:
+        - generic [ref=f5e42]:
+          - paragraph [ref=f5e43]: 02 / 登記結果
+          - heading "我的假單" [level=2] [ref=f5e44]
+        - button "查看我的假單" [ref=f5e45] [cursor=pointer]
+      - paragraph [ref=f5e46]: 申請成功後狀態為「待審核」，不代表已核准。
+      - status [ref=f5e47]: 共 4 筆申請
+      - list "請假申請列表" [ref=f5e48]:
+        - listitem [ref=f5e49]:
+          - generic [ref=f5e50]:
+            - strong [ref=f5e51]: 特休 · 0.5 天
+            - generic [ref=f5e52]: 待審核
+          - paragraph [ref=f5e53]: 2026-10-12 → 2026-10-12 · 下午
+          - paragraph [ref=f5e54]: 員工B半天
+          - text: "申請 #5"
+        - listitem [ref=f5e55]:
+          - generic [ref=f5e56]:
+            - strong [ref=f5e57]: 特休 · 2 天
+            - generic [ref=f5e58]: 待審核
+          - paragraph [ref=f5e59]: 2026-10-09 → 2026-10-12 · 整天
+          - paragraph [ref=f5e60]: 週末算例
+          - text: "申請 #3"
+        - listitem [ref=f5e61]:
+          - generic [ref=f5e62]:
+            - strong [ref=f5e63]: 特休 · 2 天
+            - generic [ref=f5e64]: 待審核
+          - paragraph [ref=f5e65]: 2026-10-09 → 2026-10-12 · 整天
+          - paragraph [ref=f5e66]: 週末算例
+          - text: "申請 #2"
+        - listitem [ref=f5e67]:
+          - generic [ref=f5e68]:
+            - strong [ref=f5e69]: 特休 · 1 天
+            - generic [ref=f5e70]: 待審核
+          - paragraph [ref=f5e71]: 2026-10-12 → 2026-10-12 · 整天
+          - paragraph [ref=f5e72]: <b>請假</b>
+          - text: "申請 #1"
